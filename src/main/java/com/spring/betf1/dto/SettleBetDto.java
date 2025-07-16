@@ -8,8 +8,6 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 public class SettleBetDto {
-    private Integer userId;
     private Integer eventId;
-    private Integer id;
-    private Integer amount;
+    private Integer winnerDriverId;
 }

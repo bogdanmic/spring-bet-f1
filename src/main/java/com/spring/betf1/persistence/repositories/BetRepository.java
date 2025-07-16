@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class BetRepository {
@@ -18,6 +20,15 @@ public class BetRepository {
             bets = new ArrayList<>();
         }
         return  bets.add(bet);
+    }
+
+    public void deleteBetsForEvent(Integer eventId){
+        if(bets == null){
+            bets = new ArrayList<>();
+        }
+       bets = bets.stream()
+               .filter(b-> !Objects.equals(b.getEventId(), eventId))
+               .collect(Collectors.toList());
     }
 
 }

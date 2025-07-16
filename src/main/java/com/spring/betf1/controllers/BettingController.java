@@ -1,6 +1,7 @@
 package com.spring.betf1.controllers;
 
 import com.spring.betf1.dto.EventDto;
+import com.spring.betf1.dto.SettleBetDto;
 import com.spring.betf1.persistence.entities.BetEntity;
 import com.spring.betf1.persistence.entities.UserEntity;
 import com.spring.betf1.services.BettingService;
@@ -45,5 +46,11 @@ public class BettingController {
              log.warn("The bet: {} was not placed",bet);
          }
          return bet;
+    }
+
+    @PostMapping("/settle")
+    public SettleBetDto placeBet(@RequestBody SettleBetDto settlement) {
+        bettingService.settleBets(settlement);
+        return settlement;
     }
 }
